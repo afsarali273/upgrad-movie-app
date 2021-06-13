@@ -11,6 +11,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import PropTypes from 'prop-types';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import ReactDOM from 'react-dom';
+import Bookshow from "../../screens/bookshow/Bookshow";
 
 const customStyles = {
     content: {
@@ -118,6 +120,10 @@ class Header extends Component {
         this.setState({contact: e.target.value})
     }
 
+    bookshowHandler= ()=>{
+        ReactDOM.render(<Bookshow></Bookshow>,document.getElementById("root"));
+    }
+
     render() {
         return (
             <div>
@@ -126,6 +132,11 @@ class Header extends Component {
                     <div className="login-btn">
                         <Button variant="contained" color="default" onClick={this.openModalHandler}> Login</Button>
                     </div>
+                    {this.props.showBookShowButton === "true" ?
+                    <div className={"bookshow-btn"}>
+                        <Button variant={"contained"} color={"primary"} onClick={this.bookshowHandler}>BOOK SHOW</Button>
+                    </div>
+                     : ""};
                 </header>
 
 
